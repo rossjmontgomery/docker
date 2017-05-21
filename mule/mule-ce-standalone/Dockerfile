@@ -2,14 +2,13 @@
 
 FROM          java:8u91-jdk
 
-ARG           MULE_ESB_VERSION
-
 # LABEL       version="ESB 3.8.0"
 # LABEL       description="Mule ESB Standalone 3.8.0."
 
 # MAINTAINER  x@y
 
 # Define environment variables.
+ENV           MULE_ESB_VERSION 3.8.4
 ENV           MULE_HOME /opt/mule
 ENV           MULE_BASE /opt/mule
 
