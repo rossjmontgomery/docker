@@ -7,17 +7,23 @@ FROM          java:8u91-jdk
 
 # MAINTAINER  x@y
 
+# ARG           MULE_ESB_VERSION
+
 # Define environment variables.
-ENV           MULE_ESB_VERSION 3.8.4
+
 ENV           MULE_HOME /opt/mule
 ENV           MULE_BASE /opt/mule
 
 # Install Mule CE
 WORKDIR       /opt
-RUN           wget https://repository-master.mulesoft.org/nexus/content/repositories/releases/org/mule/distributions/mule-standalone/${MULE_ESB_VERSION}/mule-standalone-${MULE_ESB_VERSION}.tar.gz
-RUN           tar xvzf mule-standalone-${MULE_ESB_VERSION}.tar.gz
-RUN           rm mule-standalone-${MULE_ESB_VERSION}.tar.gz
-RUN           ln -s mule-standalone-${MULE_ESB_VERSION}/ mule
+# RUN           wget https://repository-master.mulesoft.org/nexus/content/repositories/releases/org/mule/distributions/mule-standalone/${MULE_ESB_VERSION}/mule-standalone-${MULE_ESB_VERSION}.tar.gz
+RUN           wget https://repository-master.mulesoft.org/nexus/content/repositories/releases/org/mule/distributions/mule-standalone/3.8.4/mule-standalone-3.8.4.tar.gz
+# RUN           tar xvzf mule-standalone-${MULE_ESB_VERSION}.tar.gz
+RUN           tar xvzf mule-standalone-3.8.4.tar.gz
+# RUN           rm mule-standalone-${MULE_ESB_VERSION}.tar.gz
+RUN           rm mule-standalone-3.8.4.tar.gz
+# RUN           ln -s mule-standalone-${MULE_ESB_VERSION}/ mule
+RUN           ln -s mule-standalone-3.8.4/ mule
 
 # Define mount points.
 # VOLUME          ["/opt/mule/logs", "/opt/mule/conf", "/opt/mule/apps", "/opt/mule/domains"]
