@@ -28,7 +28,6 @@ RUN           ln -s mule-enterprise-standalone-$MULE_ESB_VERSION/ mule
 WORKDIR       /opt/mule
 COPY          ./mule-ee-license.lic conf/
 RUN           bin/mule -installLicense conf/mule-ee-license.lic
-RUN           rm conf/mule-ee-license.lic
 
 # Update Mule Agent
 WORKDIR       /opt/mule
