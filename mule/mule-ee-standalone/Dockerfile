@@ -8,12 +8,12 @@ LABEL         description="Mule ESB Standalone 3.8.4."
 
 # MAINTAINER  x@y
 
-# ARG           MULE_ESB_VERSION
+ARG           MULE_ESB_VERSION  # 3.8.4
+ARG           MULE_AGENT_VERSION  # 1.7.0
+ARG           ANYPOINT_PLATFORM_REGISTRATION_TOKEN
 
 # Define environment variables.
 
-ENV           MULE_ESB_VERSION 3.8.4
-ENV           MULE_AGENT_VERSION 1.7.0
 ENV           MULE_HOME /opt/mule
 ENV           MULE_BASE /opt/mule
 
@@ -25,8 +25,9 @@ RUN           rm mule-ee-distribution-standalone-$MULE_ESB_VERSION.tar.gz
 RUN           ln -s mule-enterprise-standalone-$MULE_ESB_VERSION/ mule
 
 # Install Mule Licence
+# Assumes that licence already exists in the current local directory
 WORKDIR       /opt/mule
-COPY          ./mule-ee-license.lic /opt/mule/conf/
+COPY          ./mule-ee-license.lic conf/
 RUN           bin/mule -installLicense conf/mule-ee-license.lic
 RUN           rm conf/mule-ee-license.lic
 
@@ -38,10 +39,6 @@ RUN           rm bin/amc_setup.bat
 RUN           unzip agent-setup-$MULE_AGENT_VERSION.zip -d bin/
 RUN           bin/amc_setup --update
 RUN           rm agent-setup-$MULE_AGENT_VERSION.zip
-
-# Configure and Register Mule Agent for Hybrid Management
-WORKDIR       /opt/mule/bin
-RUN           ./amc_setup --encrypt --hybrid <token> $HOSTNAME
 
 # TODO: add/edit mule-agent.yaml?
 
@@ -65,6 +62,10 @@ EXPOSE        5000
 # Mule JMX port (must match Mule config file)
 EXPOSE        1098
 
+# Copy start script to bin directory
+WORKDIR /opt/mule
+COPY docker-run-mule.sh bin/
+
 # Environment and execution:
 WORKDIR       /opt/mule
-CMD           bin/mule
+CMD           bin/docker-run-mule.sh ANYPOINT_PLATFORM_REGISTRATION_TOKEN
