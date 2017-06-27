@@ -44,4 +44,4 @@ EXPOSE          1098
 
 # Environment and execution:
 WORKDIR         /opt/mule
-CMD             bin/mule
+CMD             bin/mule start
