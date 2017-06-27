@@ -14,7 +14,7 @@ ARG           MULE_AGENT_VERSION=1.7.0
 
 ENV           MULE_HOME=/opt/mule
 ENV           MULE_BASE=/opt/mule
-ENV           ANYPOINT_PLATFORM_REGISTRATION_TOKEN
+ENV           ANYPOINT_PLATFORM_REGISTRATION_TOKEN=""
 
 # Install Mule EE
 WORKDIR       /opt
