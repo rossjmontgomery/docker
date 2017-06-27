@@ -29,13 +29,16 @@ WORKDIR       /opt/mule
 COPY          ./mule-ee-license.lic conf/
 RUN           bin/mule -installLicense conf/mule-ee-license.lic
 
+# Install Mule Agent
+WORKDIR       /opt/mule/bin
+RUN           ./amc_setup --skip-gateway-clientid
+
 # Update Mule Agent
-WORKDIR       /opt/mule
 RUN           wget http://mule-agent.s3.amazonaws.com/$MULE_AGENT_VERSION/agent-setup-$MULE_AGENT_VERSION.zip
-RUN           rm bin/amc_setup
-RUN           rm bin/amc_setup.bat
-RUN           unzip agent-setup-$MULE_AGENT_VERSION.zip -d bin/
-RUN           bin/amc_setup --update
+RUN           rm amc_setup
+RUN           rm amc_setup.bat
+RUN           unzip agent-setup-$MULE_AGENT_VERSION.zip
+RUN           ./amc_setup --update
 RUN           rm agent-setup-$MULE_AGENT_VERSION.zip
 
 # TODO: add/edit mule-agent.yaml?
