@@ -5,17 +5,16 @@ FROM          java:8u91-jdk
 
 LABEL         version="ESB 3.8.4"
 LABEL         description="Mule ESB Standalone 3.8.4."
+# LABEL         maintainer="x@y"
 
-# MAINTAINER  x@y
-
-ARG           MULE_ESB_VERSION  # 3.8.4
-ARG           MULE_AGENT_VERSION  # 1.7.0
-ARG           ANYPOINT_PLATFORM_REGISTRATION_TOKEN
+ARG           MULE_ESB_VERSION=3.8.4
+ARG           MULE_AGENT_VERSION=1.7.0
 
 # Define environment variables.
 
-ENV           MULE_HOME /opt/mule
-ENV           MULE_BASE /opt/mule
+ENV           MULE_HOME=/opt/mule
+ENV           MULE_BASE=/opt/mule
+ENV           ANYPOINT_PLATFORM_REGISTRATION_TOKEN
 
 # Install Mule EE
 WORKDIR       /opt
@@ -64,8 +63,8 @@ EXPOSE        1098
 
 # Copy start script to bin directory
 WORKDIR /opt/mule
-COPY docker-run-mule.sh bin/
+COPY start-mule.sh bin/
 
 # Environment and execution:
 WORKDIR       /opt/mule
-CMD           bin/docker-run-mule.sh ANYPOINT_PLATFORM_REGISTRATION_TOKEN
+CMD           ["bin/start-mule.sh"]
