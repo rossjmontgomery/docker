@@ -59,8 +59,9 @@ EXPOSE        5000
 EXPOSE        1098
 
 # Copy start script to bin directory
-WORKDIR /opt/mule
-COPY start-mule.sh bin/
+WORKDIR       /opt/mule/bin
+COPY          start-mule.sh .
+RUN           chmod u+x start-mule.sh
 
 # Environment and execution:
 WORKDIR       /opt/mule
