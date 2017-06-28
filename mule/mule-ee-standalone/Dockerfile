@@ -40,6 +40,7 @@ RUN           unzip agent-setup-$MULE_AGENT_VERSION.zip
 
 # Define mount points.
 # VOLUME      ["/opt/mule/logs", "/opt/mule/conf", "/opt/mule/apps", "/opt/mule/domains"]
+VOLUME        ["/opt/mule/logs"]
 
 # TODO: configure wrapper.conf?
 
