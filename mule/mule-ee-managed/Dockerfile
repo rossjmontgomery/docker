@@ -38,7 +38,9 @@ RUN           unzip agent-setup-$MULE_AGENT_VERSION.zip
 
 # register server with name provided IFF a registration token has been provided
 WORKDIR       /opt/mule/bin
-RUN           if [-n $($ANYPOINT_PLATFORM_REGISTRATION_TOKEN | xargs)] then ./amc_setup --encrypt --hybrid $ANYPOINT_PLATFORM_REGISTRATION_TOKEN $MULE_SERVER_NAME fi
+COPY          ./register-mule-agent.sh .
+RUN           chmod u+x register-mule-agent.sh
+RUN           ./register-mule-agent.sh $MULE_SERVER_NAME $ANYPOINT_PLATFORM_REGISTRATION_TOKEN
 
 # TODO: add/edit mule-agent.yaml?
 
