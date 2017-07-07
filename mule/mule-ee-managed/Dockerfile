@@ -56,8 +56,8 @@ VOLUME        ["/opt/mule/logs"]
 
 # HTTP Service Port
 # Expose the necessary port ranges as required by the Mule Apps
-EXPOSE        8081-8181
-EXPOSE        8443-8543
+EXPOSE        8081
+EXPOSE        8443
 
 # Mule JMX port (must match Mule config file)
 EXPOSE        1098
