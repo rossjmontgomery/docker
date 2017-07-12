@@ -38,6 +38,7 @@ RUN           unzip agent-setup-$MULE_AGENT_VERSION.zip
 # TODO: add/edit mule-agent.yaml?
 
 # Import Anypoint Platform certificate into truststore.
+RUN           echo $MULE_TRUSTSTORE_PASSWORD
 WORKDIR       /opt/mule
 RUN           mkdir security
 WORKDIR       /opt/mule/security
