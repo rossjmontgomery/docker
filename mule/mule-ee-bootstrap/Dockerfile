@@ -70,6 +70,9 @@ EXPOSE        5000
 # Mule JMX port (must match Mule config file)
 EXPOSE        1098
 
+# install grep!
+RUN           apt-get install grep
+
 # Environment and execution: ensure only the bootstrapper runs on first execution.
 WORKDIR       /opt/mule
 COPY          ./mule-runner.sh bin/
