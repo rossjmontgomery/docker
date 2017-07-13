@@ -77,4 +77,5 @@ RUN           apt-get install grep
 WORKDIR       /opt/mule
 COPY          ./mule-runner.sh bin/
 RUN           chmod u+x bin/mule-runner.sh
-CMD           ["bin/mule-runner.sh", "bootstrap", "> /opt/mule/logs/mule-runner-bootstrap.log"]
+#CMD           ["bin/mule-runner.sh", "bootstrap", "> /opt/mule/logs/mule-runner-bootstrap.log"]
+CMD           bin/mule-runner.sh bootstrap > /opt/mule/logs/mule-runner-bootstrap.log
