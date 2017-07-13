@@ -70,6 +70,6 @@ EXPOSE        5000
 # Mule JMX port (must match Mule config file)
 EXPOSE        1098
 
-# Environment and execution:
+# Environment and execution: ensure only the bootstrapper runs on first execution.
 WORKDIR       /opt/mule
-CMD           ["bin/mule"]
+CMD           ["bin/mule", "-app", "mule-runtime-agent-bootstrapper"]
