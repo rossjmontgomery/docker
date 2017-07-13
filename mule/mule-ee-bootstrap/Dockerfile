@@ -74,4 +74,4 @@ EXPOSE        1098
 WORKDIR       /opt/mule
 COPY          ./mule-runner.sh bin/
 RUN           chmod u+x bin/mule-runner.sh
-CMD           ["bin/mule-runner.sh"]
+CMD           ["bin/mule-runner.sh", "bootstrap"]
