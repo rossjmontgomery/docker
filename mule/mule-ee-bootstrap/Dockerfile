@@ -72,5 +72,6 @@ EXPOSE        1098
 
 # Environment and execution: ensure only the bootstrapper runs on first execution.
 WORKDIR       /opt/mule
-COPY          ./mule-runner.sh bin/ && chmod u+x bin/mule-runner.sh
+COPY          ./mule-runner.sh bin/
+RUN           chmod u+x bin/mule-runner.sh
 CMD           ["bin/mule-runner.sh"]
