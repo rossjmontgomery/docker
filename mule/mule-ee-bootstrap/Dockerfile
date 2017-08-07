@@ -16,6 +16,14 @@ ARG           MULE_TRUSTSTORE_PASSWORD=""
 ENV           MULE_HOME=/opt/mule
 ENV           MULE_BASE=/opt/mule
 
+# Install wget
+# TODO: maybe avoid this by downloading files prior to building the image?
+RUN           apt-get update
+RUN           apt-get install -y wget
+
+# Install unzip (required for extraction of Mule Agent zip file)
+RUN           apt-get install -y unzip
+
 # Install Mule EE
 WORKDIR       /opt
 RUN           wget https://s3.amazonaws.com/new-mule-artifacts/mule-ee-distribution-standalone-$MULE_ESB_VERSION.tar.gz
