@@ -12,5 +12,3 @@ RUN rm $JAVA_ARCHIVE_NAME
 
 RUN export JAVA_INSTALL_DIR=$(ls)
 RUN ln -s /opt/java/$JAVA_INSTALL_DIR java
-
-RUN export PATH=$JAVA_HOME/bin:$PATH
