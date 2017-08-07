@@ -3,6 +3,7 @@ FROM ubuntu:16.04
 ARG JAVA_ARCHIVE_NAME
 
 ENV JAVA_HOME=/opt/java/java
+ENV PATH=$JAVA_HOME/bin:$PATH
 
 WORKDIR /opt/java
 
