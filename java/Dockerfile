@@ -10,5 +10,4 @@ COPY $JAVA_ARCHIVE_NAME .
 RUN tar xvzf $JAVA_ARCHIVE_NAME
 RUN rm $JAVA_ARCHIVE_NAME
 
-RUN export JAVA_INSTALL_DIR=$(ls)
-RUN ln -s /opt/java/$JAVA_INSTALL_DIR java
+RUN ln -s /opt/java/$(ls) java
