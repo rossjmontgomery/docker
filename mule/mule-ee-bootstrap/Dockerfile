@@ -1,8 +1,7 @@
 # Dockerizing Mule EE
 
-# TODO: use a custom java image?
 # NOTE: have to use 8u131+ in order to support docker cpu/mem constraints
-FROM          openjdk:8u141-jdk
+FROM          java:server-jre-8u144-linux-x64
 
 LABEL         version="ESB 3.8.4"
 LABEL         description="Mule ESB Standalone 3.8.4. with server (re-)registration bootstrap app"
